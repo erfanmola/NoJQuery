@@ -1,0 +1,2707 @@
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>جی‌کوئری لازم نیست</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+        <link rel="manifest" href="manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/nprogress.js"></script>
+    </head>
+
+    <body>
+        <script>NProgress.start()</script>
+        <script src="js/js.cookie.min.js"></script>
+        <script src="js/highlight.pack.js"></script>
+        <script src="js/typed.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+        <header class="holder">
+
+            <section id="section-right">
+                <img src="assets/images/jquery.svg" alt="JQuery Logo" class="no-select">
+                <a href=""><h1>جی‌کوئری لازم نیست !</h1></a>
+                <p>نیازی نیست برای سایتت JQuery لود کنی (:</p>
+            </section>
+
+            <section id="section-left">
+                <div class="toggle-btn" id="mode-switch">
+                    <input type="checkbox" id="mode-switch-toggle" checked>
+                    <span></span>
+                </div>
+            </section>
+
+        </header>
+
+        <script>
+            var _Cookies$get;
+
+            let Mode = (_Cookies$get = Cookies.get('no-jquery-mode')) !== null && _Cookies$get !== void 0 ? _Cookies$get : 'light';
+
+            const ModeSwitch = document.getElementById('mode-switch-toggle');
+
+            ModeSwitch.addEventListener('change', (event) => {
+                SwitchMode();
+            });
+
+            const SwitchMode = (reverse = false) => {
+
+                if (reverse) {
+                    if (Mode === 'light') {
+                        setLightMode();
+                    }else{
+                        setDarkMode();
+                    }
+                }else{
+                    if (Mode === 'light') {
+                        setDarkMode();
+                    }else{
+                        setLightMode();
+                    }
+                }
+
+            };
+
+            const setDarkMode = () => {
+                document.body.classList.add('dark');
+                Cookies.set('no-jquery-mode', 'dark' , { expires: 30, path: '' });
+                Mode = 'dark';
+                ModeSwitch.checked = false;
+                NotifyMode('dark');
+            };
+
+            const setLightMode = () => {
+                document.body.classList.remove('dark');
+                Cookies.set('no-jquery-mode', 'light', { expires: 30, path: '' });
+                Mode = 'light';
+                ModeSwitch.checked = true;
+                NotifyMode('light');
+            };
+
+            SwitchMode(true);
+
+            window.addEventListener("storage", ReceiveMode);
+
+            function NotifyMode(message) {
+                localStorage.setItem('message',JSON.stringify(message));
+            }
+
+            function ReceiveMode(ev) {
+                if (ev.key === 'message') {
+                    let message = JSON.parse(ev.newValue);
+
+                    switch (message) {
+                        case "dark" :
+                            setDarkMode();
+                            break;
+                        case "light" :
+                            setLightMode();
+                            break;
+                    }
+
+                }
+            }
+
+        </script>
+
+        <div id="main-container" class="holder">
+
+            <header>
+
+                <p id="auto-type-1"></p>
+
+                <div class="terminal">
+
+                    <div class="widgets"></div>
+
+                    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fa&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;پروژه باحال من&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        <mark>&lt;script src=&quot;JQuery.js&quot;&gt;&lt;/script&gt;</mark>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                </div>
+
+                <p id="auto-type-2"></p>
+
+                <p class="hint"  id="auto-type-3"></p>
+
+                <p class="hint" id="auto-type-4"></p>
+
+                <p class="hint" id="auto-type-5"></p>
+
+                <script>
+
+                    const strings = {
+                        alert_first  : 'وقتی پروژه‌ای رو شروع می‌کنید، این ساختار اولیه پروژه‌تون هستش، درسته ؟',
+                        alert_second : 'خب، قراره اون قسمت JQuery اش رو حذف کنیم (:',
+                        hint_first   : 'راستش JQuery یکی از باحال‌ترین کتابخونه هایی هستش که Javascript در طول عمرش به‌خودش دیده، یه عده متخصص اومدند نشستند یه کتابخونه باحالی رو نوشتند که ما توی پروژه‌هامون استفاده کنیم و کم‌تر کد بنویسیم، ولی به چه قیمت ؟ از نظر یک ایده‌آل‌گرا، هرچیزی که به درد نخوره و استفاده نشه، اضافی هست ! ، توی جی‌کوئری هم به همین شکل هستش، ما حدود 280 کیلوبایت فایل JS لود می‌کنیم توی تمامی صفحاتمون، فقط و فقط به‌خاطر اینکه اونقد تنبل هستیم که به‌جای 2 کیلوبایت کد، 1 کیلوبایت کد بنویسیم و این با <a href="https://ThePerfectSite.ir" target="_blank">استاندارد های ایده‌آل‌ترین وبسایت دنیا</a>، جور در نمیاد (:',
+                        hint_second  : 'قصد داریم کلی از توابع و متد هایی که از روی تنبلی با JQuery نوشتیم و عادت کردیم رو با VanillaJS بنویسیم که هم خوش‌مزه باشه و هم وانیلی و از همه مهم‌تر، کم‌حجم‌تر و بهینه‌تر (:',
+                        hint_vanilla : 'راستی، عبارت VanillaJS یا همون جاوا اسکریپت وانیلی، به معنی کد های خام جاوا اسکریپت هست که بدون استفاده از هیچ فریمورکی و فقط و فقط با قابلیت های پیشفرض خود زبان Javascript پیاده‌سازی شدند، درمورد CSS و VanillaCSS هم این مورد صدق می‌کنه'
+                    };
+
+                    var typed = new Typed('#auto-type-1', {
+                        strings: [strings['alert_first']],
+                        typeSpeed: 60,
+                        showCursor: false,
+                        onComplete: () => {
+
+                            setTimeout(() => {
+
+                                typed = new Typed('#auto-type-2', {
+                                    strings: [strings['alert_second']],
+                                    typeSpeed: 60,
+                                    showCursor: false,
+                                    onComplete: () => {
+
+                                        setTimeout(() => {
+
+                                            typed = new Typed('#auto-type-3', {
+                                                strings: [strings['hint_first']],
+                                                typeSpeed: 30,
+                                                showCursor: false,
+                                                onComplete: () => {
+
+                                                    setTimeout(() => {
+
+                                                        typed = new Typed('#auto-type-4', {
+                                                            strings: [strings['hint_second']],
+                                                            typeSpeed: 50,
+                                                            showCursor: false,
+                                                            onComplete: () => {
+
+                                                                setTimeout(() => {
+
+                                                                    typed = new Typed('#auto-type-5', {
+                                                                        strings: [strings['hint_vanilla']],
+                                                                        typeSpeed: 60,
+                                                                        showCursor: false
+                                                                    });
+
+                                                                }, 2000);
+
+                                                            }
+                                                        });
+
+                                                    }, 2000);
+
+                                                }
+                                            });
+
+                                        }, 2000);
+
+                                    }
+                                });
+
+                            }, 2000);
+
+                        }
+                    });
+                </script>
+
+            </header>
+
+            <section class="section-holder no-border-bottom">
+
+                <span class="divider no-select" id="section-selector">...</span>
+
+                <a href="#section-selector"><h2>انتخاب‌گر جی‌کوئری</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>یکی از دلایل محبوبیت JQuery ، ساده‌سازی انتخاب‌گر های خود Javascript برای انتخاب عناصر موجود در DOM می‌باشد، برای ایجاد همین قابلیت شیرین انتخاب با <kbd>$</kbd> به‌جای نوشتن دستورات طولانی برای کار با انواع Selector ها می‌تونیم تابع زیر رو یک‌بار تعریف کنیم و بعدش از <kbd>$</kbd> به‌عنوان انتخاب‌گر استفاده کنیم :</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                    <span class="caption no-select">VanillaJS</span>
+                    <div class="widgets"></div>
+
+                    <pre><code class="javascript">function $(query) {
+  return document.querySelectorAll(query);
+}
+// بعد از تعریف، می‌تونیم استفاده کنیم
+$('Selector');</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                    <span class="caption no-select">JQuery</span>
+                    <div class="widgets"></div>
+
+                    <pre><code class="javascript">$('Selector');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder subject">
+
+                <span class="divider no-select" id="subject-ajax"></span>
+
+                <a href="#subject-ajax"><h1>ایجکس (AJAX)</h1></a>
+
+                <span class="divider no-select"></span>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-ajax-json">...</span>
+
+                <a href="#section-ajax-json"><h2>ایجکس (JSON)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>قابلیت گرفتن اطلاعات به‌صورت AJAX با ساختار <kbd>JSON</kbd> به‌صورت یک آبجکت قابل دسترس در لایه کدنویسی، از دیگر قابلیت های پرکاربرد جی‌کوئری می‌باشد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var request = new XMLHttpRequest();
+request.open('GET', '/my/url', true);
+
+request.onload = function() {
+  if (this.status >= 200 && this.status < 400) {
+    // درخواست موفق و نتیجه صحیح
+    var data = JSON.parse(this.response);
+  } else {
+    // اتصال موفق ولی نتیجه با خطا
+  }
+};
+
+request.onerror = function() {
+  // مشکل اتصال به سرور
+};
+
+request.send();</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.getJSON('/my/url', function(data) {
+
+});</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-ajax-get">...</span>
+
+                <a href="#section-ajax-get"><h2>ایجکس (GET)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>قابلیت ارسال درخواست <kbd>GET</kbd> به‌شکل AJAX در کتابخانه جی‌کوئری نیز از طریق کد های زیر میسر می‌باشد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var request = new XMLHttpRequest();
+request.open('GET', '/my/url', true);
+
+request.onload = function() {
+  if (this.status >= 200 && this.status < 400) {
+    // درخواست موفق و نتیجه صحیح
+    var resp = this.response;
+  } else {
+    // اتصال موفق ولی نتیجه با خطا
+
+  }
+};
+
+request.onerror = function() {
+  // مشکل اتصال به سرور
+};
+
+request.send();</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.ajax({
+  type: 'GET',
+  url: '/my/url',
+  success: function(resp) {
+
+  },
+  error: function() {
+
+  }
+});</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder no-border-bottom">
+
+                <span class="divider no-select" id="section-ajax-post">...</span>
+
+                <a href="#section-ajax-post"><h2>ایجکس (POST)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>قابلیت ارسال درخواست <kbd>POST</kbd> به‌شکل AJAX در کتابخانه جی‌کوئری نیز از طریق کد های زیر میسر می‌باشد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var request = new XMLHttpRequest();
+request.open('POST', '/my/url', true);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+request.send(data);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.ajax({
+  type: 'POST',
+  url: '/my/url',
+  data: data
+});
+</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder subject">
+
+                <span class="divider no-select" id="subject-effects"></span>
+
+                <a href="#subject-effects"><h1>افکت‌ها</h1></a>
+
+                <span class="divider no-select"></span>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-fade-in">...</span>
+
+                <a href="#section-fade-in"><h2>محو شدن به داخل (Fade In)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>افکت محو شدن به سمت داخل نیز یکی از قابلیت های پرکاربرد جی‌کوئری می‌باشد که به‌راحتی می‌توان با دو خط اسکریپت و چند خط استایل پیاده کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.classList.add('show');
+el.classList.remove('hide');</code></pre>
+                    </section>
+
+                    <section class="section-code terminal second-box">
+                        <span class="caption no-select">VanillaCSS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="css">.show {
+  transition: opacity 400ms;
+}
+.hide {
+  opacity: 0;
+}</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).fadeIn();</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-fade-out">...</span>
+
+                <a href="#section-fade-out"><h2>محو شدن به بیرون (Fade Out)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>افکت محو شدن به سمت بیرون نیز یکی از قابلیت های پرکاربرد جی‌کوئری می‌باشد که به‌راحتی می‌توان با دو خط اسکریپت و چند خط استایل پیاده کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.classList.add('hide');
+el.classList.remove('show');</code></pre>
+                    </section>
+
+                    <section class="section-code terminal second-box">
+                        <span class="caption no-select">VanillaCSS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">.show {
+  opacity: 1;
+}
+.hide {
+  opacity: 0;
+  transition: opacity 400ms;
+}</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).fadeOut();</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-hide">...</span>
+
+                <a href="#section-hide"><h2>پنهان شدن</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>افکت پنهان کردن عناصر توسط جی‌کوئری را نیز می‌توان با استفاده از یک خط اسکریپت با تغییر استایل، پیاده کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                    <span class="caption no-select">VanillaJS</span>
+                    <div class="widgets"></div>
+
+                    <pre><code class="javascript">el.style.display = 'none';</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                    <span class="caption no-select">JQuery</span>
+                    <div class="widgets"></div>
+
+                    <pre><code class="javascript">$(el).hide();</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder no-border-bottom">
+
+                <span class="divider no-select" id="section-show">...</span>
+
+                <a href="#section-show"><h2>ظاهر شدن</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>افکت ظاهر شدن عناصر توسط جی‌کوئری را نیز می‌توان با استفاده از یک خط اسکریپت با تغییر استایل، پیاده کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                    <span class="caption no-select">VanillaJS</span>
+                    <div class="widgets"></div>
+
+                    <pre><code class="javascript">el.style.display = '';</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                    <span class="caption no-select">JQuery</span>
+                    <div class="widgets"></div>
+
+                    <pre><code class="javascript">$(el).show();</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder subject">
+
+                <span class="divider no-select" id="subject-elements"></span>
+
+                <a href="#subject-elements"><h1>عناصر</h1></a>
+
+                <span class="divider no-select"></span>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-add-class">...</span>
+
+                <a href="#section-add-class"><h2>افزودن کلاس</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>متد زیر برای افزودن کلاس به یک عنصر به‌کار می‌رود که می‌توان معادل جی‌کوئری آنرا با جاوا اسکریپت به شکل زیر پیاده کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.classList.add(className);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).addClass(className);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-remove-class">...</span>
+
+                <a href="#section-remove-class"><h2>حذف کلاس</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای حذف یک کلاس یا همان <kbd>Class</kbd> از یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.classList.remove(className);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).removeClass(className);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-has-class">...</span>
+
+                <a href="#section-has-class"><h2>داشتن کلاس مشخص (Has Class)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای اطلاع از مشمولیت یک عنصر از یک کلاس مشخص می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.classList.contains(className);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).hasClass(className);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-toggle-class">...</span>
+
+                <a href="#section-toggle-class"><h2>افزودن/حذف کلاس (Toggle)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای افزودن در صورت عدم وجود، یا حذف درصورت وجود یک کلاس در یک‌ عنصر، یا همان <kbd>Toggle</kbd> کردن یک کلاس می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.classList.toggle(className);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).toggleClass(className);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-before">...</span>
+
+                <a href="#section-before"><h2>قبل (Before)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>متد زیر برای کار با شبه‌عنصر <kbd>Before</kbd> در عناصر به‌کار می‌رود که می‌توان معادل جی‌کوئری آنرا با جاوا اسکریپت به شکل زیر پیاده کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">target.insertAdjacentElement('beforebegin', element);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(target).before(element);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-after">...</span>
+
+                <a href="#section-after"><h2>بَعد (After)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>متد زیر برای کار با شبه‌عنصر <kbd>After</kbd> در عناصر به‌کار می‌رود که می‌توان معادل جی‌کوئری آنرا با جاوا اسکریپت به شکل زیر پیاده کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">target.insertAdjacentElement('afterend', element);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(target).after(element);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-prepend">...</span>
+
+                <a href="#section-prepend"><h2>ضمیمه در ابتدا (Prepend)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>با استفاده از متد <kbd>Prepend</kbd> می‌توان یک عنصری را به ابتدای یک عنصر دیگر اضافه نمود و معادل آن در جاوا اسکریپت خام به شکل زیر می‌باشد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">parent.insertBefore(el, parent.firstChild);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(parent).prepend(el);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-append">...</span>
+
+                <a href="#section-append"><h2>ضمیمه در انتها (Append)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>با استفاده از متد <kbd>Append</kbd> می‌توان یک عنصری را به انتهای یک عنصر دیگر اضافه نمود و معادل آن در جاوا اسکریپت خام به شکل زیر می‌باشد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">parent.appendChild(el);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(parent).append(el);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-parent">...</span>
+
+                <a href="#section-parent"><h2>والد (Parent)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به والد یا همان <kbd>Parent</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.parentNode</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).parent();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-children">...</span>
+
+                <a href="#section-children"><h2>فرزندان (Children)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>از متد <kbd>Children</kbd> برای دسترسی به فرزندان یک عنصر استفاده می‌شود که می‌توان به راحتی با جاوا اسکریپت ساده به‌آن دسترسی پیدا کرد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.children</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).children();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-clone">...</span>
+
+                <a href="#section-clone"><h2>جفت‌سازی (Clone)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای جفت‌سازی (کپی/تکثیر) یک عنصر از متد <kbd>Clone</kbd> استفاده می‌شود که می‌توان طبق نمونه زیر به‌کار برد</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.cloneNode(true);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).clone();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-remove">...</span>
+
+                <a href="#section-remove"><h2>حذف (Remove)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای حذف یک عنصر از DOM و از بین بردن کامل آن می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.parentNode.removeChild(el);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).remove();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-empty">...</span>
+
+                <a href="#section-empty"><h2>خالی کردن (Empty)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای خالی کردن یک عنصر و حذف تمامی فرزندان زیرمجموعه آن عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">while(el.firstChild)
+  el.removeChild(el.firstChild);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).empty();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-each">...</span>
+
+                <a href="#section-each"><h2>به ازای هرکدام (Each)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای ایجاد یک تکرار حلقه به ازای هرکدام از عناصر موجود در دامنه انتخاب‌گر می‌توان از تابع زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var elements = document.querySelectorAll(selector);
+Array.prototype.forEach.call(elements, function(el, i){
+
+});</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(selector).each(function(i, el){
+
+});
+</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-filter">...</span>
+
+                <a href="#section-filter"><h2>فیلتر کردن (Filter)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای اعمال فیلتر انتخاب‌گر می‌توان از تکه کد زیر به‌عنوان جایگزین تابع جی‌کوئری استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(selector).filter(filterFn);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-find-children">...</span>
+
+                <a href="#section-find-children"><h2>یافتن فرزندان (Find Children)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به فرزندان یک عنصر از طریق انتخاب‌گر، می‌توان از تکه کد زیر به‌عنوان معادل جی‌کوئری آن استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.querySelectorAll(selector);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).find(selector);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-find-elements">...</span>
+
+                <a href="#section-find-elements"><h2>یافتن عناصر (Find Elements)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی مستقیم به یک عنصر به‌جای استفاده از انتخاب‌گر <kbd>$</kbd> می‌توان از تکه کد زیر به‌صورت مستقیم استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">document.querySelectorAll('.my #awesome selector');</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$('.my #awesome selector');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-attributes">...</span>
+
+                <a href="#section-get-attributes"><h2>گرفتن خصوصیات (Attributes)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به خصوصیات یا همان <kbd>Attribute</kbd> های یک عنصر می‌توان از معادل زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.getAttribute('tabindex');</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).attr('tabindex');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-set-attribute">...</span>
+
+                <a href="#section-set-attribute"><h2>تنظیم خاصیت (Attributes)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تنظیم خصوصیات یا همان <kbd>Attribute</kbd> های یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.setAttribute('tabindex', 3);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).attr('tabindex', 3);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-remove-attribute">...</span>
+
+                <a href="#section-remove-attribute"><h2>حذف خاصیت (Attribute)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای حذف یکی از خاصیت‌ها یا همان <kbd>Attribute</kbd> های یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.removeAttribute('tabindex');</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).removeAttr('tabindex');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-inner-html">...</span>
+
+                <a href="#section-get-inner-html"><h2>گرفتن محتوای داخلی (Inner HTML)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به محتوای داخلی یا همان <kbd>Inner HTML</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.innerHTML</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).html();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-set-html">...</span>
+
+                <a href="#section-set-html"><h2>تنظیم محتوای داخلی (Inner HTML)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تنظیم محتوای <kbd>HTML</kbd> داخل یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.innerHTML = string;</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).html(string);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-outer-html">...</span>
+
+                <a href="#section-get-outer-html"><h2>گرفتن محتوای خارجی (Outer HTML)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به محتوای خارجی یا همان <kbd>Outer HTML</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.outerHTML</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).prop('outerHTML');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-replace-from-html">...</span>
+
+                <a href="#section-replace-from-html"><h2>تنظیم محتوای خارجی (Outer HTML)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای جایگزین کردن یک عنصر با یک رشته دیگر شامل تگ های <kbd>HTML</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.outerHTML = string;</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).replaceWith(string);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-style">...</span>
+
+                <a href="#section-get-style"><h2>گرفتن استایل (Style)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به مشخصه هایی از استایل های بصری یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">getComputedStyle(el)[ruleName];</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).css(ruleName);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-set-style">...</span>
+
+                <a href="#section-set-style"><h2>تنظیم استایل (Style)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تنظیم استایل یا همان مشخصه های <kbd>CSS</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.style.borderWidth = '20px';</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).css('border-width', '20px');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-text-content">...</span>
+
+                <a href="#section-get-text-content"><h2>گرفتن متن (Text Content)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به محتوای متنی یا همان <kbd>Text Content</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.textContent</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).text();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-set-text">...</span>
+
+                <a href="#section-set-text"><h2>تنظیم متن (Text Content)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تنظیم محتوای متنی یا همان <kbd>Text Content</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.textContent = string;</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).text(string);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-width">...</span>
+
+                <a href="#section-get-width"><h2>گرفتن عرض (Width)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به عرض یا همان مشخصه <kbd>Width</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">parseFloat(getComputedStyle(el, null).width.replace("px", ""))</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).width();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-set-width">...</span>
+
+                <a href="#section-set-width"><h2>تنظیم عرض (Width)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تنظیم عرض یا همان <kbd>Width</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">function setHeight(el, val) {
+    if (typeof val === "function") val = val();
+    if (typeof val === "string") el.style.height = val;
+    else el.style.height = val + "px";
+}
+
+setHeight(el, val);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).height(val);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-height">...</span>
+
+                <a href="#section-get-height"><h2>گرفتن ارتفاع (Height)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به ارتفاع یا همان مشخصه <kbd>Height</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">parseFloat(getComputedStyle(el, null).height.replace("px", ""));</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).height();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-set-height">...</span>
+
+                <a href="#section-set-height"><h2>تنظیم ارتفاع (Height)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تنظیم ارتفاع یا همان <kbd>Height</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">function setHeight(el, val) {
+    if (typeof val === "function") val = val();
+    if (typeof val === "string") el.style.height = val;
+    else el.style.height = val + "px";
+}
+
+setHeight(el, val);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).height(val);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-contains">...</span>
+
+                <a href="#section-contains"><h2>مشمولیت (Contains)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای اطلاع از مشمولیت یک عنصر در یک عنصر دیگر، از متد <kbd>Contains</kbd> استفاده می‌شود که طبق نمونه زیر می‌توان استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el !== child && el.contains(child);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.contains(el, child);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-contains-selector">...</span>
+
+                <a href="#section-contains-selector"><h2>مشمولیت انتخاب‌گر (Contains Selector)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای اطلاع از مشمولیت یک عنصر در یک انتخاب‌گر خاص از متد زیر می‌توان به‌عنوان نمونه جاوا اسکریپتی خام استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">!!el.querySelector(selector);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).find(selector).length;</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-matches-selector">...</span>
+
+                <a href="#section-matches-selector"><h2>هم‌خوانی انتخاب‌گر (Matches Selector)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای بررسی و اطلاع از هم‌خوانی انتخاب‌گر توسط یک عنصر می‌توان از تابع زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var matches = function(el, selector) {
+  return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);
+};
+
+matches(el, '.my-class');</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).is('.my-class');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-index">...</span>
+
+                <a href="#section-index"><h2>شاخص ! (Index)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به شاخص یا همان <kbd>Index</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">function index(el) {
+  if (!el) return -1;
+  var i = 0;
+  do {
+    i++;
+  } while (el = el.previousElementSibling);
+  return i;
+}</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).index();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-index-of">...</span>
+
+                <a href="#section-index-of"><h2>وجود شاخص (Index Of)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای بررسی وجود یک شاخص یا همان متد <kbd>Index Of</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">array.indexOf(item);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.inArray(item, array);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-equation">...</span>
+
+                <a href="#section-equation"><h2>یکسان بودن</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای مقایسه و بررسی یکسان بودن یا نبودن دو عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el === otherEl</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).is($(otherEl));</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-previous-element">...</span>
+
+                <a href="#section-previous-element"><h2>عنصر قبلی (Previous)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به عنصر قبلی هم‌والد با عنصر فعلی می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.previousElementSibling</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).prev();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-next-element">...</span>
+
+                <a href="#section-next-element"><h2>عنصر بعدی (Next)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به عنصر بعدی هم‌والد با عنصر فعلی می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.nextElementSibling</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).next();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-offset">...</span>
+
+                <a href="#section-offset"><h2>موقعیت (Offset)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به موقعیت عنصر، از جمله مشخصه های <kbd>Top</kbd> و <kbd>Left</kbd> و سایر مشخصه‌ها می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var rect = el.getBoundingClientRect();
+
+{
+  top: rect.top + document.body.scrollTop,
+  left: rect.left + document.body.scrollLeft
+}</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).offset();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-parent-offset">...</span>
+
+                <a href="#section-parent-offset"><h2>موقعیت والد</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به موقعیت والد یا همان <kbd>Parent</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.offsetParent || el</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).offsetParent();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-outer-width">...</span>
+
+                <a href="#section-get-outer-width"><h2>عرض بیرونی</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به عرض بیرونی یا همان <kbd>Outer Width</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.offsetWidth</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).outerWidth();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-outer-height">...</span>
+
+                <a href="#section-get-outer-height"><h2>ارتفاع بیرونی</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به ارتفاع بیرونی یا همان <kbd>Outer Height</kbd> یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.offsetHeight</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).outerHeight();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-outer-width-with-margin">...</span>
+
+                <a href="#section-get-outer-width-with-margin"><h2>عرض بیرونی با حاشیه</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به عرض بیرونی یک عنصر به‌همراه حاشیه‌ها یا همان <kbd>Margin</kbd> های آن عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">function outerWidth(el) {
+  var width = el.offsetWidth;
+  var style = getComputedStyle(el);
+
+  width += parseInt(style.marginLeft) + parseInt(style.marginRight);
+  return width;
+}
+
+outerWidth(el);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).outerWidth(true);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-get-outer-height-width-margin">...</span>
+
+                <a href="#section-get-outer-height-width-margin"><h2>ارتفاع بیرونی با حاشیه</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به ارتفاع بیرونی یک عنصر به‌همراه حاشیه‌ها یا همان <kbd>Margin</kbd> های آن عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">function outerHeight(el) {
+  var height = el.offsetHeight;
+  var style = getComputedStyle(el);
+
+  height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+  return height;
+}
+
+outerHeight(el);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).outerHeight(true);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-position">...</span>
+
+                <a href="#section-position"><h2>موقعیت (Position)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به مختصات یا همان <kbd>Position</kbd> یک عنصر، از جمله مشخصه های <kbd>Top</kbd> و <kbd>Left</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">{left: el.offsetLeft, top: el.offsetTop}</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).position();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-position-relative-to-viewport">...</span>
+
+                <a href="#section-position-relative-to-viewport"><h2>موقعیت نسبت به Viewport</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به موقعیت و مختصات عنصر نسبت به محل نمایش یا همان <kbd>Viewport</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.getBoundingClientRect()</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var offset = el.offset();
+
+{
+  top: offset.top - document.body.scrollTop,
+  left: offset.left - document.body.scrollLeft
+}</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder no-border-bottom">
+
+                <span class="divider no-select" id="section-siblings">...</span>
+
+                <a href="#section-siblings"><h2>هم‌والد‌ها (Siblings)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به دوستان هم‌والد یا همان <kbd>Sibling</kbd> های یک عنصر می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">Array.prototype.filter.call(el.parentNode.children, function(child){
+  return child !== el;
+});</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).siblings();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder subject">
+
+                <span class="divider no-select" id="subject-events"></span>
+
+                <a href="#subject-events"><h1>رویداد‌ها</h1></a>
+
+                <span class="divider no-select"></span>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-ready">...</span>
+
+                <a href="#section-ready"><h2>آمادگی (Ready)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تعریف رویداد جهت اجرا پس از آماده شدن سند یا همان <kbd>Document Ready</kbd> می‌توان از تابع زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(document).ready(function(){
+
+});</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-add-event-listener">...</span>
+
+                <a href="#section-add-event-listener"><h2>افزودن رویداد</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای افزودن یک رویداد یا همان <kbd>Event</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.addEventListener(eventName, eventHandler);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).on(eventName, eventHandler);</code></pre>
+                    </section>
+                </div>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-remove-event-listener">...</span>
+
+                <a href="#section-remove-event-listener"><h2>حذف رویداد</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای حذف یک رویداد یا همان <kbd>Event</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">el.removeEventListener(eventName, eventHandler);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).off(eventName, eventHandler);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-delegate-event">...</span>
+
+                <a href="#section-delegate-event"><h2>افزودن نمایندگی رویداد (Delegate)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای نمایندگی یک رویداد یا به اصطلاح <kbd>Delegate</kbd> کردن یک رویداد می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">document.addEventListener(eventName, function(e) {
+    for (var target = e.target; target && target != this; target = target.parentNode) {
+        if (target.matches(elementSelector)) {
+            handler.call(target, e);
+            break;
+        }
+    }
+}, false);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(document).on(eventName, elementSelector, handler);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-trigger-custom">...</span>
+
+                <a href="#section-trigger-custom"><h2>راه‌اندازی شخصی (Custom Trigger)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای راه‌اندازی شخصی یک رویداد یا همان <kbd>Custom Trigger</kbd> کردن رویداد می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">if (window.CustomEvent && typeof window.CustomEvent === 'function') {
+  var event = new CustomEvent('my-event', {detail: {some: 'data'}});
+} else {
+  var event = document.createEvent('CustomEvent');
+  event.initCustomEvent('my-event', true, true, {some: 'data'});
+}
+
+el.dispatchEvent(event);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).trigger('my-event', {some: 'data'});</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder no-border-bottom">
+
+                <span class="divider no-select" id="section-trigger-native">...</span>
+
+                <a href="#section-trigger-native"><h2>راه‌اندازی محلی (Native Trigger)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای راه‌اندازی محلی یک رویداد یا همان <kbd>Native Trigger</kbd> کردن رویداد می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var event = document.createEvent('HTMLEvents');
+event.initEvent('change', true, false);
+el.dispatchEvent(event);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(el).trigger('change');</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder subject">
+
+                <span class="divider no-select" id="subject-utils"></span>
+
+                <a href="#subject-utils"><h1>متفرقه</h1></a>
+
+                <span class="divider no-select"></span>
+
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-for-each">...</span>
+
+                <a href="#section-for-each"><h2>به ازای هر (For Each)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای ایجاد تابعی برای اجرا در حلقه به ازای هر یا همان <kbd>For Each</kbd> اعضای یک آرایه می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">array.forEach(function(item, i){
+
+});
+</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.each(array, function(i, item){
+
+});</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-bind">...</span>
+
+                <a href="#section-bind"><h2>ترکیب (Bind)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای استفاده از متد <kbd>Proxy</kbd> در جی‌کوئری که برای <kbd>Bind</kbd> توابع به‌کار می‌رود، می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">fn.bind(context);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.proxy(fn, context);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-extend">...</span>
+
+                <a href="#section-extend"><h2>گسترش (Extend)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای استفاده از متد گسترش یا همان <kbd>Extend</kbd> در جی‌کوئری می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var extend = function(out) {
+  out = out || {};
+
+  for (var i = 1; i < arguments.length; i++) {
+    if (!arguments[i])
+      continue;
+
+    for (var key in arguments[i]) {
+      if (arguments[i].hasOwnProperty(key))
+        out[key] = arguments[i][key];
+    }
+  }
+
+  return out;
+};
+
+extend({}, objA, objB);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.extend({}, objA, objB);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-deep-extend">...</span>
+
+                <a href="#section-deep-extend"><h2>گسترش عمیق (Deep Extend)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای استفاده از متد گسترش عمیق یا همان <kbd>Deep Extend</kbd> در جی‌کوئری می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var deepExtend = function(out) {
+  out = out || {};
+
+  for (var i = 1; i < arguments.length; i++) {
+    var obj = arguments[i];
+
+    if (!obj)
+      continue;
+
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object'){
+          if(obj[key] instanceof Array == true)
+            out[key] = obj[key].slice(0);
+          else
+            out[key] = deepExtend(out[key], obj[key]);
+        }
+        else
+          out[key] = obj[key];
+      }
+    }
+  }
+
+  return out;
+};
+
+deepExtend({}, objA, objB);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.extend(true, {}, objA, objB);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-is-array">...</span>
+
+                <a href="#section-is-array"><h2>آرایه بودن/نبودن</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای بررسی آرایه بودن یا نبودن یک شیء می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">Array.isArray(arr);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.isArray(arr);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-map">...</span>
+
+                <a href="#section-map"><h2>نقشه (Map)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای کار با <kbd>Map</kbd> در جاوا اسکریپت می‌توان از معادل جی‌کوئری زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">array.map(function(value, index){
+
+});</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.map(array, function(value, index){
+
+});</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-now">...</span>
+
+                <a href="#section-now"><h2>زمان حال (Now)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای دسترسی به زمان حال یا همان <kbd>Now</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">Date.now();</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.now();</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-parse-html">...</span>
+
+                <a href="#section-parse-html"><h2>تجزیه HTML</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تجزیه یا همان <kbd>Parse</kbd> کردن یک رشته از نوع <kbd>HTML</kbd> می‌توان از تابع زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">var parseHTML = function(str) {
+  var tmp = document.implementation.createHTMLDocument();
+  tmp.body.innerHTML = str;
+  return tmp.body.children;
+};
+
+parseHTML(htmlString);
+</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.parseHTML(htmlString);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-parse-json">...</span>
+
+                <a href="#section-parse-json"><h2>تجزیه JSON</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تجزیه یا همان <kbd>Parse</kbd> کردن یک رشته از نوع <kbd>JSON</kbd> می‌توان از تابع زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">JSON.parse(string);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.parseJSON(string);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-slice">...</span>
+
+                <a href="#section-slice"><h2>تکه کردن (Slice)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای تکه‌تکه کردن عناصر و دسترسی به آنها از طریق متد <kbd>Slice</kbd> می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">els.slice(begin, end);</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$(els).slice(begin, end);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-trim">...</span>
+
+                <a href="#section-trim"><h2>برش (Trim)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای برش یا همان <kbd>Trim</kbd> کردن یک رشته می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">string.trim();</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.trim(string);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <section class="section-holder">
+
+                <span class="divider no-select" id="section-type">...</span>
+
+                <a href="#section-type"><h2>نوع (Type)</h2></a>
+
+                <span class="divider no-select">...</span>
+
+                <p>برای اطلاع از نوع یا همان <kbd>Type</kbd> یک شی می‌توان از متد زیر استفاده نمود</p>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">VanillaJS</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/, '$1').toLowerCase();</code></pre>
+                    </section>
+                </div>
+
+                <div class="section-container">
+                    <section class="section-code terminal">
+                        <span class="caption no-select">JQuery</span>
+                        <div class="widgets"></div>
+
+                        <pre><code class="javascript">$.type(obj);</code></pre>
+                    </section>
+                </div>
+            </section>
+
+            <p class="caution">در نهایت، برای صلب مسئولیت باید خدمتتون عرض کنم که ما نمیگیم که نباید از JQuery یا بقیه دوستانش استفاده کرد، بلکه صحبت ما سر این هست که تنبلی رو کنار بزاریم و چون بلد نیستیم یا حوصله نداریم یاد بگیریم، نیایم و چندین مگابایت فریمورک و کتابخونه لود کنیم توی پروژه، چون پرفرمنس واقعا مهم هست و در اشاره به اون عده از دوستانی که با حالت متفکرانه‌ای می‌گویند : "چرخ را نباید مجددا اختراع کرد" باید عرض کنم که این صفحه خوشگل و پر محتوا، به‌همراه سه نوع فونت‌فیس لود شده و کل محتویات، حدود 300 کیلوبایت هست، اونوقت یه صفحه گل‌منگلی که توش JQuery و Bootstrap و بقیه دوستانش رو لود می‌کنید، چندین مگابایت حجمش میشه و سریع توی بیوگرافی می‌نویسید "آیم وب دولوپر"، راستش ایران‌خودرو هم ماشین تولید می‌کنه، تسلا هم ماشین تولید می‌کنه و خوشبختانه جفتشون هم کار می‌کنند</p>
+
+        </div>
+
+
+
+        <footer class="holder">
+
+
+            <p>
+                 توسعه با
+                <b>3></b> توسط <a href="https://erfanmola.ir" target="_blank">عرفان مولا</a> | <a href="https://github.com/erfanmola/NoJQuery" id="contribute" target="_blank">مشارکت در توسعه پروژه</a>
+            </p>
+
+            <a href="https://erfanmola.ir" target="_blank" id="EM-Copyright">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1454 1015">
+                    <path data-name="Color Fill 1" d="M706 0v122H359L231 251h475v121H235l471 472v171Q353.035 662.53 0 310L310 0h396zm42 0h397l309 311h-2q-129.48 129.488-259 259h-1V400q44.49-45 89-90-16.995-17-34-34-76.485-76.992-153-154h-5v553L965 798h-1l1-676c-.33-.333-.67-.667-1-1l-93 1v771q-61.494 60.99-123 122V0z" fill="#fff" fill-rule="evenodd"></path>
+                </svg>
+            </a>
+
+        </footer>
+
+        <script>NProgress.done()</script>
+
+    </body>
+</html>
