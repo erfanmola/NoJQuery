@@ -976,7 +976,7 @@ el.classList.remove('show');</code></pre>
                         <div class="widgets"></div>
 
                         <pre><code class="javascript">var elements = document.querySelectorAll(selector);
-Array.prototype.forEach.call(elements, function(el, i){
+elements.forEach(function(el, i){
 
 });</code></pre>
                     </section>
@@ -1010,7 +1010,7 @@ Array.prototype.forEach.call(elements, function(el, i){
                         <span class="caption no-select">VanillaJS</span>
                         <div class="widgets"></div>
 
-                        <pre><code class="javascript">Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);</code></pre>
+                        <pre><code class="javascript">[...document.querySelectorAll(selector)].filter(filterFn);</code></pre>
                     </section>
                 </div>
 
