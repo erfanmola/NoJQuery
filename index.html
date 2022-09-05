@@ -2693,8 +2693,22 @@ parseHTML(htmlString);
             <p class="caution" style="padding-bottom: 16px;">در نهایت، برای سلب مسئولیت باید خدمتتون عرض کنم که ما نمیگیم که نباید از JQuery یا بقیه دوستانش استفاده کرد، بلکه صحبت ما سر این هست که تنبلی رو کنار بزاریم و چون بلد نیستیم یا حوصله نداریم یاد بگیریم، نیایم و چندین مگابایت فریمورک و کتابخونه لود کنیم توی پروژه، چون پرفرمنس واقعا مهم هست و در اشاره به اون عده از دوستانی که با حالت متفکرانه‌ای می‌گویند : "چرخ را نباید مجددا اختراع کرد" باید عرض کنم که این صفحه خوشگل و پر محتوا، به‌همراه سه نوع فونت‌فیس لود شده و کل محتویات، حدود 300 کیلوبایت هست، اونوقت یه صفحه گل‌منگلی که توش JQuery و Bootstrap و بقیه دوستانش رو لود می‌کنید، چندین مگابایت حجمش میشه و سریع توی بیوگرافی می‌نویسید "آیم وب دولوپر"، راستش ایران‌خودرو هم ماشین تولید می‌کنه، تسلا هم ماشین تولید می‌کنه و خوشبختانه جفتشون هم کار می‌کنند</p>
                 
                 
-            <div id="em-projects"></div>
-            <script src="https://imerfan.ir/em-projects.js"></script>
+            <hr/>
+
+            <section class="project">
+                
+                <div>
+
+                    <i class="icon-figma" data-v-7122f848=""></i>
+                                       
+                    <h2>لیست پروژه‌ها</h2>
+                    
+                </div>
+
+                <ul id="projects"></ul>
+
+            </section>
+            
         </div>
 
 
@@ -2708,14 +2722,12 @@ parseHTML(htmlString);
             </p>
 
             <a href="https://erfanmola.ir" target="_blank" id="EM-Copyright">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1454 1015">
-                    <path data-name="Color Fill 1" d="M706 0v122H359L231 251h475v121H235l471 472v171Q353.035 662.53 0 310L310 0h396zm42 0h397l309 311h-2q-129.48 129.488-259 259h-1V400q44.49-45 89-90-16.995-17-34-34-76.485-76.992-153-154h-5v553L965 798h-1l1-676c-.33-.333-.67-.667-1-1l-93 1v771q-61.494 60.99-123 122V0z" fill="#fff" fill-rule="evenodd"></path>
-                </svg>
+                <i class="icon-ErfanMola"></i>
             </a>
 
         </footer>
-                
-        <script data-type="em-star" data-name="NoJQuery" data-lang="fa" data-color-accent="#B71C1C" src="https://imerfan.ir/em-star.js" defer></script>                
+        
+        <script src="https://developix-ir.github.io/Developix/DPXGithubRating.js" repository="erfanmola/NoJQuery" text="ستاره" star="icon-star" defer="defer"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161433595-5"></script>
@@ -2728,6 +2740,60 @@ parseHTML(htmlString);
         </script>
 
         <script>NProgress.done()</script>
+
+        <script>
+
+            async function FetchDevelopixProjectsList() {
+
+                let request = await fetch("https://developix-ir.github.io/Developix/DevelopixProjects.json");
+
+                try {
+                    
+                    let result = await request.json();
+
+                    return result;
+
+                } catch(Exception) {
+                    
+                    return null;
+                }
+
+            }
+
+            let DevelopixProjectsList = FetchDevelopixProjectsList();
+          
+            Promise.all([DevelopixProjectsList]).then((itemList) => {
+
+                const items = itemList[0];
+                const DevelopixProjectsContext = "nojquery"
+                
+                Object.keys(items).forEach(key => {
+
+                    if(!(items[key]['status']) || key === DevelopixProjectsContext) {
+
+                        return;
+                    }
+
+                    var li =  document.createElement("li");
+                    var a  =  document.createElement("a");
+
+                    li.style.background = `linear-gradient(215deg, ${items[key]['colors'][1]} 0%, ${items[key]['colors'][0]} 100%)`;
+
+                    a.rel = "noopener";
+                    a.target = "_blank";
+                    a.innerText = items[key]['title'];
+                    a.href = items[key]['link']
+
+                    li.appendChild(a);
+                   
+
+                    document.getElementById("projects").appendChild(li);
+                    
+                })
+
+            })
+
+        </script>
 
     </body>
 </html>
