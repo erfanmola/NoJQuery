@@ -549,3 +549,14 @@ footer {
   }
 
 }
+
+.caution:last-of-type {
+  margin-bottom: 16px;
+}
+
+.caution ~ hr {
+  border: 1px solid transparent;
+  height: 1px;
+  margin: 16px 0;
+  background-image: linear-gradient(90deg,transparent,rgba(0,0,0,.25),transparent);
+}
