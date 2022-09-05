@@ -488,6 +488,79 @@ footer #EM-Copyright:hover svg path {
   fill: #ffffff;
 }
 
+.DPXGithubRatingButton {
+  position: fixed;
+  background: #f6f8fa;
+  color: #24292f;
+  border: 1px solid #d5d8da;
+  box-shadow: rgba(27, 31, 36, 0.15), 0 1px 0 rgba(27, 31, 36, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  left: 32px;
+  bottom: 32px;
+  line-height: normal;
+  padding: 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  transition: opacity 0.15s;
+}
+.DPXGithubRatingButton span, .DPXGithubRatingButton i, .DPXGithubRatingButton b {
+  display: flex;
+  align-items: center;
+}
+.DPXGithubRatingButton b {
+  padding: 2px 6px;
+  border-right: 2px solid #d5d8da;
+}
+.DPXGithubRatingButton i {
+  padding: 0 6px 0 0;
+}
+.DPXGithubRatingButton span {
+  padding: 0 6px;
+}
+.DPXGithubRatingButton:hover {
+  opacity: 0.75;
+}
+
+#projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 32px;
+  padding: 16px;
+}
+#projects li {
+  display: block;
+  border-radius: 24px;
+  transition: opacity 0.15s;
+  padding: 0 4px;
+}
+#projects li:hover {
+  opacity: 0.75;
+}
+#projects li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 64px 0;
+  color: #fff;
+  font-size: 1.25rem;
+  font-variation-settings: "wght" 600;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.project div:first-of-type {
+  color: #353535;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.project div:first-of-type h2 {
+  font-size: 1.325rem;
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
@@ -790,7 +863,6 @@ body.dark mark {
     width: 100% !important;
     margin: 0 !important;
   }
-
   header {
     padding: 16px 0 !important;
   }
@@ -822,7 +894,6 @@ body.dark mark {
     margin: 18px 0 6px !important;
     font-size: 15px !important;
   }
-
   #main-container span.divider {
     margin: 0 !important;
     padding: 0 !important;
@@ -856,7 +927,6 @@ body.dark mark {
   #main-container .caution {
     padding-top: 16px !important;
   }
-
   footer p {
     width: 100% !important;
     text-align: center !important;
@@ -867,6 +937,14 @@ body.dark mark {
   }
 }
 @media only screen and (max-width: 600px) {
+  #projects {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    padding: 12px 8px;
+  }
+  #projects li a {
+    font-size: 1rem !important;
+  }
   header {
     padding: 16px 0 8px !important;
   }
@@ -926,14 +1004,10 @@ body.dark mark {
   header .hljs {
     font-size: 15px !important;
   }
-
   #main-container p {
     font-size: 14px !important;
   }
-
   footer p {
     font-size: 14px !important;
   }
 }
-
-/*# sourceMappingURL=styles.css.map */
