@@ -436,16 +436,14 @@ footer {
     border: 1px solid $colorRedCopyright;
     text-align: center;
     transition: 0.15s all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    svg {
-      margin-top: 9px;
-      height: 24px;
-
-      path {
-        transition: 0.15s all;
-        fill: $colorRedCopyright;
-      }
-
+    i {
+      transition: 0.15s all;
+      color: $colorRedCopyright;
+      font-size: 1.45rem;
     }
 
     &:hover {
@@ -453,10 +451,8 @@ footer {
       color: $colorWhiteCopyright;
       border-color: $colorWhiteCopyright;
 
-      svg {
-        path {
-          fill: $colorWhiteCopyright;
-        }
+      i {
+        color: $colorWhiteCopyright;
       }
 
     }
@@ -538,11 +534,15 @@ footer {
 
 .project div:first-of-type {
   color: #353535;
-  padding: 12px 0;
+  padding: 12px;
   display: flex;
   align-items: center;
   gap: 4px;
 
+  i {
+    font-size: 1.5rem;
+    padding-left: 8px;
+  }
 
   h2 {
     font-size: 1.325rem;
