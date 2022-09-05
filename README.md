@@ -2,7 +2,7 @@
     <img src="https://nojquery.ir/NoJQuery.png" alt="جی‌کوئری لازم نیست !" style="max-width: 100%;">
 </div>
 
-<div dir="rtl">
+<div style="text-align: right;" dir="rtl">
 
 # ⭕️ جی‌کوئری لازم نیست !
 
