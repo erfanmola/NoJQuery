@@ -121,6 +121,34 @@
     }
 
   }
+  
+  .DPXGithubRatingButton {
+    font-size: 0.9rem;
+    left: 16px;
+    grid-template-areas: "count count"
+    "star text";
+    border-radius: 8px;
+
+    b {
+      grid-area: count;
+      border-right: none !important;
+      text-align: center;
+      justify-content: center;
+      padding: 4px 0 0;
+      border-bottom: 2px solid $dpxgithubrating-border;
+    }
+
+    span {
+      grid-area: text;
+      padding: 0 0 4px 4px;
+    }
+
+    i {
+      grid-area: star;
+      padding: 0 4px 4px;
+    }
+      
+  }
 
   header {
 

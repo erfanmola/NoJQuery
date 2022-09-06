@@ -15,8 +15,8 @@
 }
 @font-face {
   font-family: "icomoon";
-  src: url("../assets/fonts/IconFont/icomoon.eot?y2fo9i");
-  src: url("../assets/fonts/IconFont/icomoon.eot?y2fo9i#iefix") format("embedded-opentype"), url("../assets/fonts/IconFont/icomoon.ttf?y2fo9i") format("truetype"), url("../assets/fonts/IconFont/icomoon.woff?y2fo9i") format("woff"), url("../assets/fonts/IconFont/icomoon.svg?y2fo9i#icomoon") format("svg");
+  src: url("../assets/fonts/IconFont/icomoon.eot?5dtojp");
+  src: url("../assets/fonts/IconFont/icomoon.eot?5dtojp#iefix") format("embedded-opentype"), url("../assets/fonts/IconFont/icomoon.ttf?5dtojp") format("truetype"), url("../assets/fonts/IconFont/icomoon.woff?5dtojp") format("woff"), url("../assets/fonts/IconFont/icomoon.svg?5dtojp#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -31,6 +31,10 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-star:before {
+  content: "\e902";
 }
 
 .icon-figma:before {
@@ -120,6 +124,7 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -735,6 +740,14 @@ body.dark a {
 body.dark a:hover {
   color: #ffa000;
 }
+body.dark .DPXGithubRatingButton {
+  background: #303530;
+  color: #f6f8fa;
+  border: 1px solid #d5d8da;
+}
+body.dark .DPXGithubRatingButton b {
+  border-right: 2px solid #d5d8da;
+}
 body.dark header #section-right img {
   filter: invert(1);
 }
@@ -987,6 +1000,28 @@ body.dark mark {
   }
   #projects li a {
     font-size: 1rem !important;
+  }
+  .DPXGithubRatingButton {
+    font-size: 0.9rem;
+    left: 16px;
+    grid-template-areas: "count count" "star text";
+    border-radius: 8px;
+  }
+  .DPXGithubRatingButton b {
+    grid-area: count;
+    border-right: none !important;
+    text-align: center;
+    justify-content: center;
+    padding: 4px 0 0;
+    border-bottom: 2px solid #d5d8da;
+  }
+  .DPXGithubRatingButton span {
+    grid-area: text;
+    padding: 0 0 4px 4px;
+  }
+  .DPXGithubRatingButton i {
+    grid-area: star;
+    padding: 0 4px 4px;
   }
   header {
     padding: 16px 0 8px !important;
