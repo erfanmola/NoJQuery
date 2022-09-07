@@ -27,6 +27,17 @@ body.dark {
     }
   }
 
+  .DPXGithubRatingButton { 
+    background: $dpxgithubrating-bg;
+    color: $dpxgithubrating-color;
+    border: 1px solid $dpxgithubrating-border;
+
+    b {
+      border-right: 2px solid $dpxgithubrating-border;
+    }
+
+  }
+
   header {
 
     #section-right {
